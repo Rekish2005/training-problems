@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helix | Premium Employee Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                </div>
+                <span class="logo-text">Helix</span>
+            </div>
+
+            <nav class="nav-list">
+                <li class="nav-item active" data-tab="dashboard">
+                    <a class="nav-link">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="9" rx="1" />
+                            <rect x="14" y="3" width="7" height="5" rx="1" />
+                            <rect x="14" y="12" width="7" height="9" rx="1" />
+                            <rect x="3" y="16" width="7" height="5" rx="1" />
+                        </svg>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item" data-tab="employees">
+                    <a class="nav-link">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                        Employees
+                    </a>
+                </li>
+                <li class="nav-item" data-tab="departments">
+                    <a class="nav-link">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                        </svg>
+                        Departments
+                    </a>
+                </li>
+                <li class="nav-item" data-tab="settings">
+                    <a class="nav-link">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3" />
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                        </svg>
+                        Settings
+                    </a>
+                </li>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-profile-avatar">AD</div>
+                <div class="sidebar-profile-info">
+                    <span class="sidebar-profile-name">Alex Devlin</span>
+                    <span class="sidebar-profile-role">HR Administrator</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Panel -->
+        <main class="main-panel">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-title-area">
+                    <h1 id="view-title">Dashboard Overview</h1>
+                    <p id="view-subtitle">Real-time enterprise metrics and personnel operations</p>
+                </div>
+                <div class="header-actions">
+                    <!-- Global Search (Searches employee list dynamically) -->
+                    <div class="search-container">
+                        <button class="search-icon-btn">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                        <input type="text" id="global-search" class="search-input" placeholder="Search employees...">
+                    </div>
+
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Theme">
+                        <svg class="moon-icon" viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg class="sun-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+
+                    <!-- Notifications -->
+                    <button class="notification-btn" id="notification-btn" title="Notifications">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-body">
+                
+                <!-- ==================== DASHBOARD VIEW ==================== -->
+                <div id="dashboard-view" class="tab-content active">
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="glass-card stat-card" style="--card-accent: #6366f1; --card-accent-light: rgba(99, 102, 241, 0.12);">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-title">Total Headcount</span>
+                                <span class="stat-value" id="stat-total-employees">--</span>
+                                <span class="stat-change up">
+                                    <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="3"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                                    12% from last month
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="glass-card stat-card" style="--card-accent: #10b981; --card-accent-light: rgba(16, 185, 129, 0.12);">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" /><line x1="12" y1="4" x2="12" y2="20" /><line x1="2" y1="12" x2="22" y2="12" /></svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-title">Average Salary</span>
+                                <span class="stat-value" id="stat-avg-salary">--</span>
+                                <span class="stat-change up">
+                                    <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="3"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                                    3.4% annual raise
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="glass-card stat-card" style="--card-accent: #f59e0b; --card-accent-light: rgba(245, 158, 11, 0.12);">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-title">Active Projects</span>
+                                <span class="stat-value" id="stat-active-projects">--</span>
+                                <span class="stat-change up">
+                                    <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="3"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                                    2 new this week
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="glass-card stat-card" style="--card-accent: #06b6d4; --card-accent-light: rgba(6, 182, 212, 0.12);">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-title">Performance Index</span>
+                                <span class="stat-value" id="stat-performance">--</span>
+                                <span class="stat-change up">
+                                    <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="3"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                                    0.2pt increase
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Grid -->
+                    <div class="charts-grid">
+                        <div class="glass-card">
+                            <div class="chart-header">
+                                <span class="chart-title">Salary Distribution vs. Performance Rating</span>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="salary-performance-chart" class="chart-svg-container"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="glass-card">
+                            <div class="chart-header">
+                                <span class="chart-title">Department Allocation</span>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="department-allocation-chart" class="chart-svg-container"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity Section -->
+                    <div class="glass-card activity-card">
+                        <div class="chart-header" style="margin-bottom: 2rem;">
+                            <span class="chart-title">Recent Activity Feed</span>
+                        </div>
+                        <ul class="activity-list" id="activity-feed-list">
+                            <!-- Activities inserted via JS -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ==================== EMPLOYEES VIEW ==================== -->
+                <div id="employees-view" class="tab-content">
+                    <div class="filter-action-bar">
+                        <!-- Filters Group -->
+                        <div class="filters-group">
+                            <select id="filter-dept" class="select-filter">
+                                <option value="all">All Departments</option>
+                                <!-- Departments populated dynamically -->
+                            </select>
+
+                            <select id="filter-status" class="select-filter">
+                                <option value="all">All Statuses</option>
+                                <option value="Active">Active</option>
+                                <option value="On Leave">On Leave</option>
+                                <option value="Suspended">Suspended</option>
+                                <option value="Remote">Remote</option>
+                            </select>
+
+                            <select id="filter-sort" class="select-filter">
+                                <option value="name-asc">Sort: Name (A-Z)</option>
+                                <option value="name-desc">Sort: Name (Z-A)</option>
+                                <option value="salary-desc">Sort: Salary (High to Low)</option>
+                                <option value="salary-asc">Sort: Salary (Low to High)</option>
+                                <option value="date-desc">Sort: Join Date (Newest)</option>
+                                <option value="date-asc">Sort: Join Date (Oldest)</option>
+                            </select>
+                        </div>
+
+                        <!-- Actions Group -->
+                        <div class="actions-group">
+                            <!-- Grid / List Switcher -->
+                            <div class="view-toggle">
+                                <button id="view-toggle-list" class="view-btn active" title="List View">
+                                    <svg viewBox="0 0 24 24">
+                                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                    </svg>
+                                </button>
+                                <button id="view-toggle-grid" class="view-btn" title="Grid View">
+                                    <svg viewBox="0 0 24 24">
+                                        <rect x="3" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="14" width="7" height="7"></rect>
+                                        <rect x="3" y="14" width="7" height="7"></rect>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Add Employee Button -->
+                            <button class="btn btn-primary" id="add-employee-btn">
+                                <svg viewBox="0 0 24 24">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                Add Employee
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Employees List Container (Grid or Table View) -->
+                    <div class="glass-card" style="padding: 1.25rem;">
+                        <!-- Table View -->
+                        <div class="table-container" id="employees-table-container">
+                            <table class="employee-table" id="employee-table">
+                                <thead>
+                                    <tr>
+                                        <th class="checkbox-cell">
+                                            <input type="checkbox" id="checkbox-select-all" class="custom-checkbox">
+                                        </th>
+                                        <th>Employee</th>
+                                        <th>Role</th>
+                                        <th>Department</th>
+                                        <th>Status</th>
+                                        <th>Salary</th>
+                                        <th>Performance</th>
+                                        <th>Join Date</th>
+                                        <th style="width: 80px;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="employee-table-body">
+                                    <!-- Populated dynamically via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Grid View -->
+                        <div class="employee-grid" id="employees-grid-container">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== DEPARTMENTS VIEW ==================== -->
+                <div id="departments-view" class="tab-content">
+                    <div class="dept-grid" id="departments-grid">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- ==================== SETTINGS VIEW ==================== -->
+                <div id="settings-view" class="tab-content">
+                    <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+                        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem;">System Settings</h2>
+                        
+                        <div class="settings-group">
+                            <!-- Theme Selection -->
+                            <div class="setting-row">
+                                <div class="setting-desc-block">
+                                    <span class="setting-title">Dark Mode Theme</span>
+                                    <span class="setting-desc">Toggle the application interface dark and light theme colors.</span>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="settings-dark-mode-toggle" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <!-- Reset System Data -->
+                            <div class="setting-row">
+                                <div class="setting-desc-block">
+                                    <span class="setting-title">Reset Database to Default</span>
+                                    <span class="setting-desc">Revert all custom edits, employee changes, and updates back to initial state.</span>
+                                </div>
+                                <button class="btn btn-danger" id="settings-reset-data-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" style="stroke-width: 2.5;"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                                    Reset Database
+                                </button>
+                            </div>
+
+                            <!-- Export Employee Data -->
+                            <div class="setting-row">
+                                <div class="setting-desc-block">
+                                    <span class="setting-title">Export Employee Database</span>
+                                    <span class="setting-desc">Download a raw JSON format copy of your entire employee directory file.</span>
+                                </div>
+                                <button class="btn btn-secondary" id="settings-export-data-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">
+                                    <svg viewBox="0 0 24 24" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                                    Export JSON
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ==================== CREATE / EDIT EMPLOYEE MODAL ==================== -->
+    <div class="modal-overlay" id="employee-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title" id="employee-modal-title">Add New Employee</h3>
+                <button class="modal-close-btn" id="employee-modal-close">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="employee-form" onsubmit="return false;">
+                    <input type="hidden" id="employee-id">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="emp-first-name">First Name</label>
+                            <input type="text" id="emp-first-name" class="form-input" required placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emp-last-name">Last Name</label>
+                            <input type="text" id="emp-last-name" class="form-input" required placeholder="Doe">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emp-email">Email Address</label>
+                            <input type="email" id="emp-email" class="form-input" required placeholder="john.doe@helix.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emp-phone">Phone Number</label>
+                            <input type="tel" id="emp-phone" class="form-input" required placeholder="+1 (555) 019-2834">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emp-dept">Department</label>
+                            <select id="emp-dept" class="form-select" required>
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emp-role">Role / Title</label>
+                            <input type="text" id="emp-role" class="form-input" required placeholder="Senior Engineer">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emp-salary">Annual Salary ($)</label>
+                            <input type="number" id="emp-salary" class="form-input" required min="10000" placeholder="125000">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emp-performance">Performance Score (1.0 - 5.0)</label>
+                            <input type="number" id="emp-performance" class="form-input" required min="1.0" max="5.0" step="0.1" placeholder="4.5">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emp-join-date">Join Date</label>
+                            <input type="date" id="emp-join-date" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emp-status">Employment Status</label>
+                            <select id="emp-status" class="form-select" required>
+                                <option value="Active">Active</option>
+                                <option value="On Leave">On Leave</option>
+                                <option value="Suspended">Suspended</option>
+                                <option value="Remote">Remote</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="employee-modal-cancel">Cancel</button>
+                <button class="btn btn-primary" id="employee-modal-save">Save Employee</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== VIEW PROFILE MODAL ==================== -->
+    <div class="modal-overlay" id="profile-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Employee Profile Card</h3>
+                <button class="modal-close-btn" id="profile-modal-close">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body profile-modal-body">
+                <div class="profile-avatar-large" id="profile-avatar">--</div>
+                <div class="profile-meta-main">
+                    <h2 class="profile-meta-name" id="profile-name">John Doe</h2>
+                    <div class="profile-meta-role" id="profile-role">Product Designer</div>
+                    <div class="profile-meta-dept" id="profile-dept">Design Department</div>
+                </div>
+
+                <div class="profile-details-grid">
+                    <div class="profile-detail-item">
+                        <div class="profile-detail-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="profile-detail-info">
+                            <span class="profile-detail-label">Email Address</span>
+                            <span class="profile-detail-val" id="profile-email">--</span>
+                        </div>
+                    </div>
+                    <div class="profile-detail-item">
+                        <div class="profile-detail-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="profile-detail-info">
+                            <span class="profile-detail-label">Phone</span>
+                            <span class="profile-detail-val" id="profile-phone">--</span>
+                        </div>
+                    </div>
+                    <div class="profile-detail-item">
+                        <div class="profile-detail-icon">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" /><line x1="12" y1="4" x2="12" y2="20" /><line x1="2" y1="12" x2="22" y2="12" /></svg>
+                        </div>
+                        <div class="profile-detail-info">
+                            <span class="profile-detail-label">Annual Salary</span>
+                            <span class="profile-detail-val" id="profile-salary">--</span>
+                        </div>
+                    </div>
+                    <div class="profile-detail-item">
+                        <div class="profile-detail-icon">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </div>
+                        <div class="profile-detail-info">
+                            <span class="profile-detail-label">Date of Joining</span>
+                            <span class="profile-detail-val" id="profile-join-date">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-performance-block">
+                    <div class="profile-performance-label">
+                        <span>Performance Score</span>
+                        <span id="profile-performance-val">4.5 / 5.0</span>
+                    </div>
+                    <div class="progress-track" style="height: 8px; border-radius: 4px;">
+                        <div class="progress-bar" id="profile-performance-bar" style="width: 90%; border-radius: 4px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="badge" id="profile-status-badge">Active</span>
+                <button class="btn btn-primary" id="profile-modal-edit-btn" style="margin-left: auto;">Edit Details</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Action Bar for Bulk Selection -->
+    <div class="bulk-actions-bar" id="bulk-actions-bar">
+        <span class="bulk-actions-count" id="bulk-actions-count">0 selected</span>
+        <div class="bulk-btn-group">
+            <button class="bulk-btn" id="bulk-activate-btn">Make Active</button>
+            <button class="bulk-btn" id="bulk-leave-btn">Put on Leave</button>
+            <button class="bulk-btn" id="bulk-delete-btn" style="background-color: var(--danger);">Delete Selected</button>
+        </div>
+        <button class="modal-close-btn" id="bulk-close-btn" style="color: white;">
+            <svg viewBox="0 0 24 24" width="16" height="16" style="stroke: white;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
